@@ -1,16 +1,40 @@
 #!/usr/bin/env node
 
-const fetch = global.fetch; // Node 22 já tem fetch
+const readline = require("readline");
+
+const fetch = global.fetch;
 
 const MCP_URL = "https://cartena.com.br/api/v1/mcp";
 const TOKEN = process.env.CARTENA_TOKEN;
+
+if (!TOKEN) {
+  console.error("Missing CARTENA_TOKEN");
+}
 
 function send(response) {
   process.stdout.write(JSON.stringify(response) + "\n");
 }
 
-process.stdin.on("data", async (chunk) => {
-  const msg = JSON.parse(chunk.toString());
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  terminal: false
+});
+
+rl.on("line", async (line) => {
+  let msg;
+
+  try {
+    msg = JSON.parse(line);
+  } catch {
+    return send({
+      jsonrpc: "2.0",
+      error: {
+        code: -32700,
+        message: "Parse error"
+      }
+    });
+  }
 
   try {
     if (msg.method === "initialize") {
@@ -23,7 +47,9 @@ process.stdin.on("data", async (chunk) => {
             name: "cartena-mcp",
             version: "1.0.0"
           },
-          capabilities: {}
+          capabilities: {
+            tools: {}
+          }
         }
       });
     }
@@ -33,12 +59,12 @@ process.stdin.on("data", async (chunk) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${TOKEN}`,
+          "Authorization": `Bearer ${TOKEN}`
         },
         body: JSON.stringify({
           method: "tools/list",
-          params: {},
-        }),
+          params: {}
+        })
       });
 
       const data = await res.json();
@@ -55,12 +81,12 @@ process.stdin.on("data", async (chunk) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${TOKEN}`,
+          "Authorization": `Bearer ${TOKEN}`
         },
         body: JSON.stringify({
           method: "tools/call",
-          params: msg.params,
-        }),
+          params: msg.params
+        })
       });
 
       const data = await res.json();
@@ -72,7 +98,7 @@ process.stdin.on("data", async (chunk) => {
       });
     }
 
-    send({
+    return send({
       jsonrpc: "2.0",
       id: msg.id,
       error: {
@@ -82,8 +108,11 @@ process.stdin.on("data", async (chunk) => {
     });
 
   } catch (err) {
-    send({
+    console.error("ERROR:", err);
+
+    return send({
       jsonrpc: "2.0",
+      id: msg?.id,
       error: {
         code: -32603,
         message: err.message

@@ -1,4 +1,10 @@
 {
+  "name": "cartena-mcp",
+  "version": "1.0.0",
+  "main": "server.js",
+  "bin": {
+    "cartena-mcp": "server.js"
+  },
   "dependencies": {
     "node-fetch": "^3.3.2"
   }

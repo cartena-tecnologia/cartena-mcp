@@ -67,7 +67,8 @@ Para clientes que suportam MCP remoto com OAuth (como Claude Desktop nas versõe
 
 ---
 
-## 2. Uso via npx ❌ (NÃO recomendado) - OBS: sua credencial ficará exposta em um ambiente não seguro.
+## 2. Uso via npx ❌ (NÃO recomendado)
+OBS: sua credencial ficará exposta em um ambiente não seguro.
 
 Para usar sem instalar, via `npx`:
 

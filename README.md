@@ -35,12 +35,13 @@ https://mcp.cartena.com.br/mcp
 
    ![Conector Cartena com botão Vincular](docs/connector-vincular.png)
 
-2. Uma janela será aberta solicitando o seu **token Cartena**
-   > Encontre seu token em: [Cartena → Segurança](https://cartena.com.br/security)
+2. Uma janela será aberta solicitando a autorização
+   > Gerencie seus acesss em: [Cartena → Segurança](https://cartena.com.br/security)
 
-   ![Tela de autorização solicitando o token Cartena](docs/connector-oauth.png)
+   ![Tela de autorização Cartena](docs/connector-oauth.png)
 
-3. Cole o token e clique em **Autorizar acesso**
+3. Clique em **Autorizar acesso**
+
 4. A tela de **Conectado** confirma que a autenticação foi bem-sucedida — pode fechar a aba
 
    ![Tela de confirmação Conectado](docs/connector-conectado.png)

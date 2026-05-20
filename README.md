@@ -36,7 +36,7 @@ https://mcp.cartena.com.br/mcp
    ![Conector Cartena com botão Vincular](docs/connector-vincular.png)
 
 2. Uma janela será aberta solicitando a autorização
-   > Gerencie seus acesss em: [Cartena → Segurança](https://cartena.com.br/security)
+   > Gerencie seus acessos em: [Cartena → Segurança](https://cartena.com.br/security)
 
    ![Tela de autorização Cartena](docs/connector-oauth.png)
 

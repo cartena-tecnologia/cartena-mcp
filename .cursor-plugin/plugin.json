@@ -1,0 +1,20 @@
+{
+  "name": "cartena",
+  "version": "1.0.0",
+  "description": "Organize e acompanhe sua carteira de investimentos, proventos e despesas pessoais na Cartena pelo Cursor. Requer uma conta Cartena e autorização via OAuth.",
+  "author": {
+    "name": "Cartena"
+  },
+  "homepage": "https://cartena.com.br",
+  "repository": "https://github.com/cartena-tecnologia/cartena-mcp",
+  "keywords": [
+    "cartena",
+    "produtividade",
+    "investimentos",
+    "proventos",
+    "despesas",
+    "mcp"
+  ],
+  "logo": "cartena.svg",
+  "mcpServers": "./cursor.mcp.json"
+}
